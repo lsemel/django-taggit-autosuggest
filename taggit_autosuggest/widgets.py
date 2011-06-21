@@ -72,11 +72,12 @@ class TagAutoSuggest(forms.TextInput):
         return result_html + widget_html + mark_safe(js)
     
     class Media:
-        js_base_url = getattr(settings, 'TAGGIT_AUTOSUGGEST_STATIC_BASE_URL',
-            '%sjquery-autosuggest' % settings.STATIC_URL)
+        js_base_url = getattr(settings, 'TAGGIT_AUTOSUGGEST_STATIC_BASE_URL', '%sjquery-autosuggest' % settings.STATIC_URL)
+        css_url = getattr(settings,'TAGGIT_AUTOSUGGEST_CSS_URL','%s/css/autoSuggest.css' % js_base_url)
+        js_url = getattr(settings,'TAGGIT_AUTOSUGGEST_JS_URL','%s/js/jquery.autoSuggest.js' % js_base_url)
         css = {
-            'all': ('%s/css/autoSuggest.css' % js_base_url,)
+            'all': (css_url,)
         }
         js = (
-            '%s/js/jquery.autoSuggest.js' % js_base_url,
+            js_url,
         )
