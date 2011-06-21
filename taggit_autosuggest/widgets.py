@@ -78,5 +78,5 @@ class TagAutoSuggest(forms.TextInput):
             'all': ('%s/css/autoSuggest.css' % js_base_url,)
         }
         js = (
-            '%s/js/jquery.autoSuggest.minified.js' % js_base_url,
+            '%s/js/jquery.autoSuggest.js' % js_base_url,
         )
