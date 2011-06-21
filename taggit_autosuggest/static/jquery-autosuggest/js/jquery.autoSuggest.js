@@ -324,8 +324,18 @@
 					opts.resultsComplete.call(this);
 				}
 				
+				function item_exists(data) {
+				    var items = values_input.val().split(/,/);
+				    for (i in items) {
+				        if (items[i].trim() == data) return true;
+				    }
+				    return false;
+				}
+				
 				function add_selected_item(data, num){
-					values_input.val(values_input.val()+data[opts.selectedValuesProp]+",");
+				    var text = data[opts.selectedValuesProp];
+					if (item_exists(text)) return;
+					values_input.val(values_input.val()+text+",");
 					var item = $('<li class="as-selection-item" id="as-selection-'+num+'"></li>').click(function(){
 							opts.selectionClick.call(this, $(this));
 							selections_holder.children().removeClass("selected");
