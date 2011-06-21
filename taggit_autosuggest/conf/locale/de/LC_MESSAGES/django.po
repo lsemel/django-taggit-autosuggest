@@ -1,0 +1,35 @@
+# Copyright (C) 2011 Fabian Topfstedt
+# This file is distributed under the same license as the PACKAGE package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-03 16:56+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Fabian Topfstedt <topfstedt@schneevonmorgen.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: managers.py:11
+msgid "Tags"
+msgstr "Schlagworte"
+
+#: managers.py:12
+msgid "A comma-separated list of tags."
+msgstr "Eine durch Komma getrennte Schlagwortliste."
+
+#: widgets.py:67
+msgid "Enter Tag Here"
+msgstr "Hier Schlagwort eingeben"
+
+#: widgets.py:68
+msgid "No Results"
+msgstr "Keine Vorschläge"
+
+#: widgets.py:69
+msgid "No More Selections Are Allowed"
+msgstr "Keine Mehrauswahl erlaubt"
