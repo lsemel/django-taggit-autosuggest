@@ -184,8 +184,8 @@
 						case 9: case 188: case 13: // tab or comma
 							tab_press = true;
 							var i_input = input.val().replace(/(,)/g, "");
-							if(i_input != "" && values_input.val().search(","+i_input+",") < 0 && i_input.length >= opts.minChars){	
-								e.preventDefault();
+							e.preventDefault(); // Always prevent the default to avoid accidental submission 
+							if(i_input != "" && (!item_exists(i_input)) && i_input.length >= opts.minChars){	
 								var n_data = {};
 								n_data[opts.selectedItemProp] = i_input;
 								n_data[opts.selectedValuesProp] = i_input;																				
@@ -273,7 +273,7 @@
 						}
 						if(str){
 							if (!opts.matchCase){ str = str.toLowerCase(); }				
-							if(str.search(query) != -1 && values_input.val().search(","+data[num][opts.selectedValuesProp]+",") == -1){
+							if(str.search(query) != -1 && !item_exists(data[num][opts.selectedValuesProp])){
 								forward = true;
 							}	
 						}
