@@ -150,6 +150,8 @@
 					// track last key pressed
 					lastKeyPressCode = e.keyCode;
 					first_focus = false;
+					var active = $("li.active:first", results_holder);
+						
 					switch(e.keyCode) {
 						case 38: // up
 							e.preventDefault();
@@ -174,28 +176,30 @@
 							}
 							if(input.val().length == 1){
 								results_holder.hide();
-								 prev = "";
+								prev = "";
 							}
 							if($(":visible",results_holder).length > 0){
 								if (timeout){ clearTimeout(timeout); }
 								timeout = setTimeout(function(){ keyChange(); }, opts.keyDelay);
 							}
 							break;
-						case 9: case 188: case 13: // tab or comma
-							tab_press = true;
-							var i_input = input.val().replace(/(,)/g, "");
-							e.preventDefault(); // Always prevent the default to avoid accidental submission 
-							if(i_input != "" && (!item_exists(i_input)) && i_input.length >= opts.minChars){	
-								var n_data = {};
-								n_data[opts.selectedItemProp] = i_input;
-								n_data[opts.selectedValuesProp] = i_input;																				
-								var lis = $("li", selections_holder).length;
-								add_selected_item(n_data, "00"+(lis+1));
-								input.val("");
-							}
-						/*case 13: // return
+						case 9: case 188: case 13: // tab or comma, or return in the text box
+						    if (active.length == 0) {
+    							tab_press = true;
+    							var i_input = input.val().replace(/(,)/g, "");
+    							e.preventDefault(); // Always prevent the default to avoid accidental submission 
+    							if(i_input != "" && (!item_exists(i_input)) && i_input.length >= opts.minChars){	
+    								var n_data = {};
+    								n_data[opts.selectedItemProp] = i_input;
+    								n_data[opts.selectedValuesProp] = i_input;																				
+    								var lis = $("li", selections_holder).length;
+    								add_selected_item(n_data, "00"+(lis+1));
+    								input.val("");
+    							}   
+    							break;
+						    }
+						case 13: // return in the dropdown
 							tab_press = false;
-							var active = $("li.active:first", results_holder);
 							if(active.length > 0){
 								active.click();
 								results_holder.hide();
@@ -204,7 +208,6 @@
 								e.preventDefault();
 							}
 							break;
-							*/
 						default:
 							if(opts.showResultList){
 								if(opts.selectionLimit && $("li.as-selection-item", selections_holder).length >= opts.selectionLimit){
