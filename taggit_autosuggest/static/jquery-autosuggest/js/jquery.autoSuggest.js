@@ -329,8 +329,9 @@
 				
 				function item_exists(data) {
 				    var items = values_input.val().split(/,/);
-				    for (i in items) {
-				        if (items[i].trim() == data) return true;
+				    for (var i=0; i<items.length; i++) {
+				        var item = items[i];
+				        if (item.trim() == data) return true;
 				    }
 				    return false;
 				}
